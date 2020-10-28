@@ -28,6 +28,8 @@ Make sure you use the `actions/checkout@v2` action!
 ```yaml
 - name:  'Automated Version Bump'
   uses:  'phips28/gh-action-bump-version@master'
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
     tag-prefix:  ''
 ```
@@ -36,14 +38,28 @@ Make sure you use the `actions/checkout@v2` action!
 ```yaml
 - name:  'Automated Version Bump'
   uses:  'phips28/gh-action-bump-version@master'
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
     skip-tag:  'true'
+```
+
+**default:** Set a default version bump to use  (optional - defaults to patch). Example:
+```yaml
+- name:  'Automated Version Bump'
+  uses:  'phips28/gh-action-bump-version@master'
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  with:
+    default: prerelease
 ```
 
 **wording:** Customize the messages that trigger the version bump. It must be a string, case sensitive, coma separated  (optional). Example:
 ```yaml
 - name:  'Automated Version Bump'
   uses:  'phips28/gh-action-bump-version@master'
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
     minor-wording:  'add,Adds,new'
     major-wording:  'MAJOR,cut-major'
@@ -57,5 +73,6 @@ Make sure you use the `actions/checkout@v2` action!
 - name:  'Automated Version Bump'
   uses:  'phips28/gh-action-bump-version@master'
   env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     PACKAGEJSON_DIR:  'frontend'
 ```
